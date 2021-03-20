@@ -26,6 +26,9 @@ float v_b = 0.0;
 float vx_k = 0.0;
 float vy_k = 0.0;
 float w_k = 0.0;
+float ax_k = 0.0;
+float ay_k = 0.0;
+float ath_k = 0.0;
 float delta_s = 0.0;
 float delta_s_x = 0.0;
 float delta_s_y = 0.0;
@@ -79,10 +82,15 @@ int main(int argc, char** argv){
         v_b = w_b * wheelRadius;
 
         //cout<<"left:"<<v_l<<endl<<"right:"<<v_r<<endl<<"back:"<<v_b<<endl;
-        // linear and angular velocity of the car
+        // linear and angular velocity of the robot
         vy_k = ((2*w_b - w_l - w_r) / 3.0)*wheelRadius; // m/s
         vx_k = ((sqrt(3.0)*w_r - sqrt(3.0)*w_l) / 3)*wheelRadius; // m/s
         w_k = ((w_r + w_b + w_l) / (3*wheelBase))*wheelRadius; // rad/s
+
+        //linear and angular acceleration of the robot
+        ax_k = vx_k / dt;
+        ay_k = vy_k / dt;
+        ath_k = w_k / dt;
     
         // update new pose
         delta_s_x = (dt*dt)*(vx_k*vx_k);
@@ -99,7 +107,12 @@ int main(int argc, char** argv){
 
         cout<<"x:"<<x<<endl;
         cout<<"y:"<<y<<endl;
-        cout<<"th:"<<th<<endl;  
+        cout<<"th:"<<th<<endl;
+
+        cout<<"ax:"<<ax_k<<endl;
+        cout<<"ay:"<<ay_k<<endl;
+        cout<<"ath:"<<ath_k<<endl;
+
         //since all odometry is 6DOF we'll need a quaternion created from yaw
         geometry_msgs::Quaternion odom_quat = tf::createQuaternionMsgFromYaw(-th);
         //first, we'll publish the transform over tf
