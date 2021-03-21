@@ -6,7 +6,7 @@
       args="0 0 0 0 0 0 map odom 20"/> <!-- 100 -->
 
 <!-- Localization-->
-<node pkg="amcl" type="amcl" name="amcl">
+<node pkg="amcl" type="amcl" name="amcl" output="screen">
   <!-- Publish scans from best pose at a max of 10 Hz -->
   <remap from="scan" to="/scan_multi"/>
   <param name="odom_frame_id" value="odom"/>
