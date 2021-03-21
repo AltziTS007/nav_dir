@@ -1,0 +1,46 @@
+<?xml version="1.0" ?>
+<robot 
+   xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+	<xacro:macro
+		name="rim_macro"
+		params="name color xyz rpy"
+	>
+
+		<link name="rim_${name}_link">
+
+			<visual>
+
+				<geometry>
+
+					<mesh filename="package://sick_scan/meshes/demo_rim.stl"/>
+
+				</geometry>
+				<material name="rim_${name}_material">
+
+					<color rgba="${color} 1"/>
+
+				</material>
+
+			</visual>
+
+		</link>
+		<joint
+			name="rim_${name}_joint"
+			type="continuous"
+		>
+
+			<parent link="base_link" />
+			<child link="rim_${name}_link" />
+			<axis xyz="0 0 1"/>
+			<origin
+				xyz="${xyz}"
+				rpy="${rpy}"
+			/>
+
+		</joint>
+
+
+	</xacro:macro>
+
+</robot>

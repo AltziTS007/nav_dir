@@ -1,0 +1,91 @@
+<?xml version="1.0"?>
+<robot
+  xmlns:xacro="http://www.ros.org/wiki/xacro"
+  name="DIR_model"
+>
+
+  <xacro:include filename="$(find sick_scan)/urdf/DIR_MODEL/xacro/rim.urdf.xacro"/>
+  <link name = "base_footprint"/>
+
+  <link name="base_link">
+
+  <visual>
+    <origin xyz="0.075 -0.325 0.112"
+      rpy="-1.57 0 1.57" />
+
+    <geometry>
+
+      <mesh filename="package://sick_scan/meshes/base_link.stl"/>
+      <scale>0.001 0.001 0.001</scale>
+
+    </geometry>
+    <material name="base_material">
+
+      <color rgba="0.098039 0.098039 0.098039 1"/>
+
+    </material>
+
+  </visual>
+
+  </link>
+  <joint name = "base_joint" type = "fixed">
+	<parent link = "base_footprint" />
+	<child link = "base_link" />
+	<origin xyz = "0 0 0.02" />
+  </joint>
+  
+ <xacro:rim_macro
+    name="left"
+    color="0.3 0 0"
+    xyz="-0.03 0.215 0.04"
+    rpy="1.570796326794896 0 -0.523599"
+  />
+  <xacro:rim_macro
+    name="back"
+    color="0.3 0 0"
+    xyz="-0.397 0 0.04"
+    rpy="1.570796326794896 0 1.5708"
+  />
+  <xacro:rim_macro
+    name="right"
+    color="0.3 0 0"
+    xyz="-0.03 -0.208 0.04"
+    rpy="1.570796326794896 0 -2.61799"
+  />
+
+
+    <joint name="sick_joint_R" type="fixed">
+      <parent link="base_link" />
+      <child link="sick_R_laser" />
+      <origin rpy="3.1415 0 -1.047" xyz="0.005 -0.275 0.04"/>
+    </joint>
+
+    <link name="sick_R_laser">
+      <visual>
+        <geometry>
+          <mesh filename="package://sick_scan/meshes/sick_tim_5xx.stl"/>
+        </geometry>
+        <material name="blue" >
+          <color rgba="0 0 1 1" />
+        </material>
+      </visual>
+    </link>
+
+    <joint name="sick_joint_L" type="fixed">
+      <parent link="base_link" />
+      <child link="sick_L_laser" />
+      <origin rpy="3.1415 0 1.047" xyz="0.005 0.275 0.04"/>
+    </joint>
+
+    <link name="sick_L_laser">
+      <visual>
+        <geometry>
+          <mesh filename="package://sick_scan/meshes/sick_tim_5xx.stl"/>
+        </geometry>
+        <material name="blue" >
+          <color rgba="0 0 1 1" />
+        </material>
+      </visual>
+    </link>
+
+</robot>

@@ -1,0 +1,16 @@
+local_costmap:
+  global_frame: odom
+  robot_base_frame: base_footprint
+  update_frequency: 2.5
+  publish_frequency: 3.0
+  rolling_window: true
+  width: 3
+  height: 3
+  resolution: 0.01
+  plugins: 
+    - {name: static_layer,       type: "costmap_2d::StaticLayer"}
+    - {name: obstacle_layer,      type: "costmap_2d::ObstacleLayer"}
+    - {name: inflation,        type: "costmap_2d::InflationLayer"}
+  inflation:
+    inflation_radius: 0.1
+    cost_scaling_factor: 0.8 # larger number = lower cost elevation
