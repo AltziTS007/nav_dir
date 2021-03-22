@@ -12,11 +12,11 @@ transform_tolerance: 0.2
 always_send_full_costmap: true
 plugins: 
     - {name: static_layer,       type: "costmap_2d::StaticLayer"}
+    - {name: obstacle_layer,      type: "costmap_2d::ObstacleLayer"}
     - {name: inflation,        type: "costmap_2d::InflationLayer"}
 inflation:
     inflation_radius: 1.75    
     cost_scaling_factor: 2.58
-expected_update_rate: 0.14
 cost_factor: 0.55
 neutral_cost: 66
 lethal_cost: 253

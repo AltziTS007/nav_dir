@@ -6,7 +6,7 @@ global_costmap:
   width: 15
   height: 15
   rolling_window: true
-  resolution: 0.01
+  resolution: 0.03
   plugins: 
     - {name: static_layer,       type: "costmap_2d::StaticLayer"}
     - {name: inflation,        type: "costmap_2d::InflationLayer"}

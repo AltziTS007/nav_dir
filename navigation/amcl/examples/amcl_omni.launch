@@ -1,9 +1,10 @@
 <?xml version="1.0"?>
 <launch>
 
-<!-- Place map frame at odometry frame-->
+<!-- Place map frame at odometry frame
 <node pkg="tf" type="static_transform_publisher" name="map2odom"
-      args="0 0 0 0 0 0 map odom 20"/> <!-- 100 -->
+      args="0 0 0 0 0 0 map odom 20"/> -->
+
 
 <!-- Localization-->
 <node pkg="amcl" type="amcl" name="amcl" output="screen">
@@ -11,6 +12,7 @@
   <remap from="scan" to="/scan_multi"/>
   <param name="odom_frame_id" value="odom"/>
   <param name="base_frame_id" value="base_footprint"/>
+  <param name="global_frame_id" value="map"/>
   <param name="odom_model_type" value="omni-corrected"/>
   <param name="odom_alpha5" value="0.1"/>
   <param name="transform_tolerance" value="0.2" />

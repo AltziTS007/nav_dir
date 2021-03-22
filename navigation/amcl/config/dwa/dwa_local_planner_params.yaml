@@ -22,14 +22,14 @@ DWAPlannerROS:
   min_vel_theta: 0.1  #0.1
 
   sim_time: 1.0
-  sim_granularity: 0.04
+  sim_granularity: 0.02
   vx_samples: 13
-  vy_samples: 13
+  vy_samples: 10
   vtheta_samples: 19
 
-  goal_distance_bias: 10
+  goal_distance_bias: 20
   path_distance_bias: 32
-  occdist_scale: 0.01
+  occdist_scale: 0.02
 
   stop_time_buffer: 0.2
   oscillation_reset_dist: 0.05
@@ -39,7 +39,7 @@ DWAPlannerROS:
   scaling_speed: 0.3  #0.3
   max_scaling_factor: 0.5
 
-  xy_goal_tolerance: 0.15 # m
+  xy_goal_tolerance: 0.1 # m
   yaw_goal_tolerance: 0.2 # rad
   latch_xy_goal_tolerance: false
   prune_plan: true

@@ -6,7 +6,7 @@ local_costmap:
   rolling_window: true
   width: 3
   height: 3
-  resolution: 0.01
+  resolution: 0.03
   plugins: 
     - {name: static_layer,       type: "costmap_2d::StaticLayer"}
     - {name: obstacle_layer,      type: "costmap_2d::ObstacleLayer"}
