@@ -10,3 +10,4 @@ References:
  - https://github.com/iralabdisco/ira_laser_tools
  - https://github.com/tu-darmstadt-ros-pkg/hector_slam/tree/melodic-devel
  - https://github.com/ros-planning/navigation/tree/melodic-devel
+ - https://github.com/ros-perception/slam_gmapping
