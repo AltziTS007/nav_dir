@@ -23,6 +23,7 @@
     <remap from="scan" to="scan_multi"/>
     <param name="move_base/DWAPlannerROS/yaw_goal_tolerance" value="0.1"/>
     <param name="move_base/DWAPlannerROS/xy_goal_tolerance" value="0.2"/>
+    <param name="controller_frequency" value="13.0"/>
    </node>
 
 </launch> 
