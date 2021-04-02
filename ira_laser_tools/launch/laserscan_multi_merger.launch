@@ -13,10 +13,10 @@ DESCRITPION
 
                 <param name="angle_min" value="-2.0"/>
                 <param name="angle_max" value="2.0"/>
-                <param name="angle_increment" value="0.0058"/>
-                <param name="scan_time" value="0.0333333"/>
-                <param name="range_min" value="0.30"/>
-                <param name="range_max" value="50.0"/>
+                <param name="angle_increment" value="0.0059"/>
+                <param name="scan_time" value="0.0777777"/>
+                <param name="range_min" value="0.05"/>
+                <param name="range_max" value="2.0"/>
 
 	</node>
 </launch>

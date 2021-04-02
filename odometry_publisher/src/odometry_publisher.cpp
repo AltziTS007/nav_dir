@@ -26,6 +26,9 @@ float v_b = 0.0;
 float vx_k = 0.0;
 float vy_k = 0.0;
 float w_k = 0.0;
+float vx_prev = 0.0;
+float vy_prev = 0.0;
+float w_prev = 0.0;
 float ax_k = 0.0;
 float ay_k = 0.0;
 float ath_k = 0.0;
@@ -65,6 +68,9 @@ int main(int argc, char** argv){
     ros::Time current_time, last_time;
     current_time = ros::Time::now();
     last_time = ros::Time::now();
+    vx_prev = vx_k;
+    vy_prev = vy_k;
+    w_prev = w_k;
     ros::Rate r(100.0);
     while(node.ok()){
         ros::spinOnce();               // check for incoming messages
@@ -88,9 +94,9 @@ int main(int argc, char** argv){
         w_k = ((w_r + w_b + w_l) / (3*wheelBase))*wheelRadius; // rad/s
 
         //linear and angular acceleration of the robot
-        ax_k = vx_k / dt;
-        ay_k = vy_k / dt;
-        ath_k = w_k / dt;
+        ax_k = (vx_k - vx_prev) / dt;
+        ay_k = (vy_k - vy_prev) / dt;
+        ath_k = (w_k - w_prev) / dt;
     
         // update new pose
         delta_s_x = (dt*dt)*(vx_k*vx_k);

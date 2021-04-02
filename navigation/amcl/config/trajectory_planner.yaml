@@ -29,14 +29,14 @@ TrajectoryPlannerROS:
   #We'll configure how long and with what granularity we'll forward simulate trajectories
   sim_time: 1.2
   sim_granularity: 0.020 # meter
-  vx_samples: 30
-  vy_samples: 20
+  vx_samples: 40
+  vy_samples: 10
   vtheta_samples: 50
 
   #Parameters for scoring trajectories
   meter_scoring: true # true: unit is meter, false: cell
-  pdist_scale: 1.0 # max is 5 
-  gdist_scale: 1.4 # max is 5
+  path_distance_scale: 4.0 # max is 5 
+  goal_distance_scale: 1.4 # max is 5
   occdist_scale: 0.02
   heading_scoring: false
   heading_lookahead: 0.3 # meter
