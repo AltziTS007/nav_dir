@@ -91,7 +91,7 @@ int main(int argc, char** argv){
         // linear and angular velocity of the robot
         vy_k = ((2*w_b - w_l - w_r) / 3.0)*wheelRadius; // m/s
         vx_k = ((sqrt(3.0)*w_r - sqrt(3.0)*w_l) / 3)*wheelRadius; // m/s
-        w_k = ((w_r + w_b + w_l) / (3*wheelBase))*wheelRadius; // rad/s
+        w_k = -((w_r + w_b + w_l) / (3*wheelBase))*wheelRadius; // rad/s
 
         //linear and angular acceleration of the robot
         ax_k = (vx_k - vx_prev) / dt;
@@ -107,8 +107,8 @@ int main(int argc, char** argv){
         //y += (sin((w_k*2*pi/4096))*vx_k*(2*pi/4096) + cos((w_k*2*pi/4096))*vy_k*(2*pi/4096))*2.2;
         //th += delta_th * 0.386;
 
-        x += (cos((-th))*vx_k*(2*pi/4096) - sin((-th))*vy_k*(2*pi/4096))*2.2;
-        y += (sin((-th))*vx_k*(2*pi/4096) + cos((-th))*vy_k*(2*pi/4096))*2.2;
+        x += (cos((th))*vx_k*(2*pi/4096) - sin((th))*vy_k*(2*pi/4096))*2.2;
+        y += (sin((th))*vx_k*(2*pi/4096) + cos((th))*vy_k*(2*pi/4096))*2.2;
         th += delta_th * 0.386;
 
         cout<<"x:"<<x<<endl;
@@ -120,7 +120,7 @@ int main(int argc, char** argv){
         cout<<"ath:"<<ath_k<<endl;
 
         //since all odometry is 6DOF we'll need a quaternion created from yaw
-        geometry_msgs::Quaternion odom_quat = tf::createQuaternionMsgFromYaw(-th);
+        geometry_msgs::Quaternion odom_quat = tf::createQuaternionMsgFromYaw(th);
         //first, we'll publish the transform over tf
         geometry_msgs::TransformStamped odom_trans;
         odom_trans.header.stamp = current_time;
@@ -143,8 +143,8 @@ int main(int argc, char** argv){
         odom.pose.pose.orientation = odom_quat;
         //set the velocity
         odom.child_frame_id = "base_footprint";
-        odom.twist.twist.linear.x = vy_k;
-        odom.twist.twist.linear.y = vx_k;
+        odom.twist.twist.linear.x = vx_k;
+        odom.twist.twist.linear.y = vy_k;
         odom.twist.twist.angular.z = w_k;
         //publish the message
         odom_pub.publish(odom);

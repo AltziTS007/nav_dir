@@ -545,9 +545,9 @@ void DynamixelController::commandVelocityCallback(const geometry_msgs::Twist::Co
 
   double velocity_constant_value = 1 / (wheel_radius_ * rpm * 0.10472);
  //constant=809
-  wheel_velocity[LEFT]  = (robot_linX_vel * cos(2.094)) - (sin(2.094) * robot_linY_vel)  + (wheel_separation_ * robot_ang_vel);    
-  wheel_velocity[RIGHT] = (robot_linX_vel * cos(-2.094)) - (sin(-2.094) * robot_linY_vel ) + (wheel_separation_ * robot_ang_vel);
-  wheel_velocity[BACK]  =  robot_linX_vel + (wheel_separation_ * robot_ang_vel);
+  wheel_velocity[LEFT]  = -robot_linY_vel * 0.3333 - 0.5774 * robot_linX_vel - wheel_separation_ * 0.3333 * robot_ang_vel;    
+  wheel_velocity[RIGHT] = -robot_linY_vel * 0.3333 + 0.5774 * robot_linX_vel - wheel_separation_ * 0.3333 * robot_ang_vel;
+  wheel_velocity[BACK]  =  -robot_linY_vel * 0.6667 - wheel_separation_ * 0.3333 * robot_ang_vel;
 
  cout<<"Left speed:"<< wheel_velocity[LEFT]<<"           "<<"right velocity:"<<wheel_velocity[RIGHT]<<"         "<<"Back velocity:"<<wheel_velocity[BACK]<<endl;
   //wheel_separation_ == wheel_distance_from_center_

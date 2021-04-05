@@ -1,8 +1,8 @@
 TrajectoryPlannerROS:
   #Set the acceleration limits of the robot
-  acc_lim_theta: 3.0
-  acc_lim_x: 3.0
-  acc_lim_y: 3.0 #if it's not good change it to 1.5
+  acc_lim_theta: 1.0
+  acc_lim_x: 1.0
+  acc_lim_y: 1.0 #if it's not good change it to 1.5
 
   #Set the velocity limits of the robot
   max_vel_x: 0.2  #if its wrong change the max & min vel to 0.4 and -0.4
